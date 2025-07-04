@@ -6,29 +6,38 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:56:09 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/01 18:29:27 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/04 14:50:50 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	int_detector(char *list)
+int	int_detector(char **list)
 {
-	while (*list)
+	int	i;
+	int	j;
+
+	i = -1;
+	while (list[++i])
 	{
-		if ((*list > '9' || *list < '0') && *list != '-' && *list != '+'
-			&& *list != ' ')
-			return (0);
-		list++;
+		j = -1;
+		if ((list[i][j] == '-') || (list[i][j] == '+'))
+			j++;
+		while (list[i][++j])
+		{
+			if (list[i][j] > '9' || list[i][j] < '0')
+				return (0);
+		}
 	}
 	return (1);
 }
 
-int	*convert_char_tab_to_int(char **list)
+int	*create_tab_int_from_char(char **list)
 {
-	int	i;
-	int	j;
-	int	*array;
+	int				i;
+	int				j;
+	int				k;
+	long long int	*array;
 
 	i = 0;
 	while (list[i])
@@ -38,7 +47,29 @@ int	*convert_char_tab_to_int(char **list)
 		return (NULL);
 	j = -1;
 	while (++j < i)
-		array[j] = ft_atoi(list[j]);
-	array[j] = NULL;
+		array[j] = ft_atol(list[j]);
+	i = -1;
+	while (++j < i)
+	{
+		k = j;
+		while (++k < i)
+			if (array[j] == array[k])
+				return (free(array), NULL);
+	}
 	return (array);
+}
+
+int	detect_bad_numbers(long long int *array)
+{
+	int	i;
+
+	i = -1;
+	if (!array)
+		return (1);
+	while (array[++i])
+	{
+		if (array[i] > INT_MAX || array[i] < INT_MIN || array[i] == 0)
+			return (1);
+	}
+	return (0);
 }
