@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 18:05:52 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/04 12:03:09 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/05 14:47:01 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 # include "ft_printf.h"
 
-typedef struct t_stack
+typedef struct s_stack
 {
 	int				nb;
 	int				i;

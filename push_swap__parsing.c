@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:56:09 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/04 14:50:50 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/05 15:13:47 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,19 @@ int	*create_tab_int_from_char(char **list)
 			if (array[j] == array[k])
 				return (free(array), NULL);
 	}
+	if (detect_bad_numbers(array, i))
+		return (free(array), NULL);
 	return (array);
 }
 
-int	detect_bad_numbers(long long int *array)
+int	detect_bad_numbers(long long int *array, int size)
 {
 	int	i;
 
 	i = -1;
 	if (!array)
 		return (1);
-	while (array[++i])
+	while (i < size)
 	{
 		if (array[i] > INT_MAX || array[i] < INT_MIN || array[i] == 0)
 			return (1);
