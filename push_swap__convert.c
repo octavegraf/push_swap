@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 14:32:37 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/05 15:13:51 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/10 16:51:07 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,31 @@ t_stack	*stack_new_element(int nb, int i)
 
 t_stack	*stack_add_back(t_stack *stack, int nb, int i)
 {
+	t_stack	*next;
+	t_stack	*original;
+
 	if (!stack)
 		return (NULL);
+	original = stack;
 	while (stack->next)
 		stack = stack->next;
-	stack->next = stack_new_element(nb, i);
+	next = stack_new_element(nb, i);
+	if (!next)
+		return (stack_free(original), NULL);
 	return (stack);
+}
+
+t_stack	*stack_add_front(t_stack *stack, int nb, int i)
+{
+	t_stack	*new;
+
+	if (!stack)
+		return (NULL);
+	new = stack_new_element(nb, i);
+	if (!new)
+		return (stack_free(stack), NULL);
+	new->next = stack;
+	return (new);
 }
 
 void	stack_free(t_stack *stack)
