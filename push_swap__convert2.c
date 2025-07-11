@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap__swap.c                                  :+:      :+:    :+:   */
+/*   push_swap__convert2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 11:31:41 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/11 16:21:15 by ocgraf           ###   ########.fr       */
+/*   Created: 2025/07/11 11:00:58 by ocgraf            #+#    #+#             */
+/*   Updated: 2025/07/11 17:09:06 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_swap(t_stack *first, t_stack *second)
+void	stack_free(t_stack *stack)
 {
-	t_stack	*temp;
+	if (stack->next)
+		stack_free(stack->next);
+	stack_delete(stack);
+}
 
-	if (!first || !second)
-		return (stack_free(first), stack_free(second), NULL);
-	temp->nb = second->nb;
-	temp->i = second->i;
-	temp->next = second->nb;
-	second->nb = first->nb;
-	second->i = first->i;
-	second->next = first->next;
-	first->nb = temp->nb;
-	first->i = temp->i;
-	first->next = temp->next;
-	return (1);
+void	recalculate(t_stack *stack)
+{
+	int	i;
+
+	i = -1;
+	while (stack->next)
+	{
+		stack->i = ++i;
+		stack = stack->next;
+	}
+	stack->i = ++i;
 }

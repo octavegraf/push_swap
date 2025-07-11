@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 14:32:37 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/10 16:51:07 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/11 11:04:11 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_stack	*stack_from_array(int *array, int size)
 		return (0);
 	while (++i < size)
 	{
-		if (!stack_add_back(stack, array[i], i))
+		if (!stack_add_back(stack, array[i]))
 			stack_free(stack);
 	}
 }
@@ -43,38 +43,43 @@ t_stack	*stack_new_element(int nb, int i)
 	return (stack);
 }
 
-t_stack	*stack_add_back(t_stack *stack, int nb, int i)
+t_stack	*stack_add_back(t_stack *stack, int nb)
 {
 	t_stack	*next;
 	t_stack	*original;
+	int		i;
 
 	if (!stack)
 		return (NULL);
 	original = stack;
-	while (stack->next)
-		stack = stack->next;
+	i = 0;
 	next = stack_new_element(nb, i);
 	if (!next)
 		return (stack_free(original), NULL);
 	return (stack);
 }
 
-t_stack	*stack_add_front(t_stack *stack, int nb, int i)
+t_stack	*stack_add_front(t_stack *stack, int nb)
 {
 	t_stack	*new;
+	int		i;
 
 	if (!stack)
 		return (NULL);
-	new = stack_new_element(nb, i);
+	new = stack_new_element(nb, 0);
 	if (!new)
 		return (stack_free(stack), NULL);
 	new->next = stack;
+	i = 0;
 	return (new);
 }
 
-void	stack_free(t_stack *stack)
+void	stack_delete(t_stack *stack)
 {
-	if (stack->next)
-		stack_free(stack->next);
+	if (!stack)
+		return ;
+	stack->i = NULL;
+	stack->nb = NULL;
+	stack->next = NULL;
 	free(stack);
 }
