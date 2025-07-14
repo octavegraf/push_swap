@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:50:39 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 12:29:19 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/14 15:19:40 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 
 	stacks = push_swap_init();
 	if (argc <= 2)
-		error(134);
+		error(133);
 	if (int_detector(argv + 1, argc - 1))
 		stacks->a = create_stack_from_array(argv + 1, argc - 1);
 	if (!stacks->a)
