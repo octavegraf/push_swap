@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:31:41 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 15:47:49 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/14 18:59:17 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_stack	*ft_swap(t_stack *head)
 	head->nb = temp->nb;
 	head->i = temp->i;
 	head->next = temp->next;
-	recalculate(next);
 	return (next);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 18:05:52 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 16:14:45 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/14 19:19:56 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ typedef struct s_stacks
 	struct t_stack	*a;
 	struct t_stack	*b;
 }					t_stacks;
+
+//normalize
+int			normalize(t_stack *stack);
+void		bubble_sort(int **array, int size);
+void		sort_index(t_stack *stack, int **array, int size);
 
 //parsing
 int			int_detector(char **list, int size);
@@ -63,13 +68,12 @@ void		error(int error);
 //utils
 t_stack		*stack_from_array(long long int *array, int size);
 t_stack		*stack_new_element(int nb, int i);
-t_stack		*stack_add_back(t_stack *stack, int nb);
-t_stack		*stack_add_front(t_stack *stack, int nb);
+t_stack		*stack_add_back(t_stack *stack, int nb, int i);
+t_stack		*stack_add_front(t_stack *stack, int nb, int i);
 void		stack_delete(t_stack *stack);
 
 //utils2
 void		stack_free(t_stack *stack);
-void		recalculate(t_stack *stack);
 void		free_it(void **pointer);
 
 #endif

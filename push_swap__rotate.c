@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:57:32 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 16:06:18 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/14 19:20:40 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@ t_stack	*ft_rotate(t_stack *stack)
 
 	if (!stack)
 		return (stack_free(stack), NULL);
-	result = stack_add_back(stack, stack->nb);
+	result = stack_add_back(stack, stack->nb, stack->i);
 	if (!result)
 		return (stack_free(stack), NULL);
 	result = result->next;
 	stack_delete(stack);
-	recalculate(result);
 	return (result);
 }
 
