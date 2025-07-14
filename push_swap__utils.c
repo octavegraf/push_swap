@@ -6,13 +6,13 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 14:32:37 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 11:31:29 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/14 16:15:35 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*stack_from_array(int *array, int size)
+t_stack	*stack_from_array(long long int *array, int size)
 {
 	int		i;
 	t_stack	*stack;
@@ -22,12 +22,13 @@ t_stack	*stack_from_array(int *array, int size)
 	i = 0;
 	stack = stack_new_element(array[i], 0);
 	if (!stack)
-		return (0);
+		return (NULL);
 	while (++i < size)
 	{
 		if (!stack_add_back(stack, array[i]))
-			stack_free(stack);
+			return (stack_free(stack), NULL);
 	}
+	return (stack);
 }
 
 t_stack	*stack_new_element(int nb, int i)
@@ -45,24 +46,28 @@ t_stack	*stack_new_element(int nb, int i)
 
 t_stack	*stack_add_back(t_stack *stack, int nb)
 {
-	t_stack	*next;
-	t_stack	*original;
 	int		i;
+	t_stack	*original;
+	t_stack	*new;
 
 	if (!stack)
 		return (NULL);
-	original = stack;
-	i = 0;
-	next = stack_new_element(nb, i);
-	if (!next)
+	i = stack->i;
+	while (stack->next)
+	{
+		stack = stack->next;
+		i++;
+	}
+	new = stack_new_element(nb, ++i);
+	if (!new)
 		return (stack_free(original), NULL);
-	return (stack);
+	stack->next = new;
+	return (original);
 }
 
 t_stack	*stack_add_front(t_stack *stack, int nb)
 {
 	t_stack	*new;
-	int		i;
 
 	if (!stack)
 		return (NULL);
@@ -70,7 +75,6 @@ t_stack	*stack_add_front(t_stack *stack, int nb)
 	if (!new)
 		return (stack_free(stack), NULL);
 	new->next = stack;
-	i = 0;
 	return (new);
 }
 
@@ -78,8 +82,8 @@ void	stack_delete(t_stack *stack)
 {
 	if (!stack)
 		return ;
-	stack->i = NULL;
-	stack->nb = NULL;
+	stack->i = 0;
+	stack->nb = 0;
 	stack->next = NULL;
 	free(stack);
 }
