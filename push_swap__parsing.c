@@ -6,42 +6,39 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:56:09 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/05 15:13:47 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/14 12:28:06 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	int_detector(char **list)
+int	int_detector(char **list, int size)
 {
 	int	i;
 	int	j;
 
 	i = -1;
-	while (list[++i])
+	while (++i < size)
 	{
 		j = -1;
-		if ((list[i][j] == '-') || (list[i][j] == '+'))
+		if ((list[i][0] == '-') || (list[i][0] == '+'))
 			j++;
 		while (list[i][++j])
 		{
 			if (list[i][j] > '9' || list[i][j] < '0')
-				return (0);
+				return (ft_printf("Error\nNot number detected."), 0);
 		}
 	}
 	return (1);
 }
 
-int	*create_tab_int_from_char(char **list)
+t_stack	*create_stack_from_array(char **list, int i)
 {
-	int				i;
 	int				j;
 	int				k;
 	long long int	*array;
+	t_stack			*result;
 
-	i = 0;
-	while (list[i])
-		i++;
 	array = ft_calloc(i + 1, sizeof(int));
 	if (!array)
 		return (NULL);
@@ -54,11 +51,13 @@ int	*create_tab_int_from_char(char **list)
 		k = j;
 		while (++k < i)
 			if (array[j] == array[k])
-				return (free(array), NULL);
+				return (free_everything(array),
+					ft_printf("Error\nDouble int detected"), NULL);
 	}
 	if (detect_bad_numbers(array, i))
-		return (free(array), NULL);
-	return (array);
+		return (free_everything(array), NULL);
+	result = stack_from_array(array, i);
+	return (free_everything(array), result);
 }
 
 int	detect_bad_numbers(long long int *array, int size)
@@ -71,7 +70,7 @@ int	detect_bad_numbers(long long int *array, int size)
 	while (i < size)
 	{
 		if (array[i] > INT_MAX || array[i] < INT_MIN || array[i] == 0)
-			return (1);
+			return (ft_printf("Error\nInt (over/under)flow"), 1);
 	}
 	return (0);
 }
