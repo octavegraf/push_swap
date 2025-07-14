@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:56:09 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 12:28:06 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/14 15:21:52 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	int_detector(char **list, int size)
 		while (list[i][++j])
 		{
 			if (list[i][j] > '9' || list[i][j] < '0')
-				return (ft_printf("Error\nNot number detected."), 0);
+				return (ft_printf("Error\nNot integer detected."), 0);
 		}
 	}
 	return (1);
@@ -52,7 +52,7 @@ t_stack	*create_stack_from_array(char **list, int i)
 		while (++k < i)
 			if (array[j] == array[k])
 				return (free_everything(array),
-					ft_printf("Error\nDouble int detected"), NULL);
+					ft_printf("Error\nDuplicate detected."), NULL);
 	}
 	if (detect_bad_numbers(array, i))
 		return (free_everything(array), NULL);
