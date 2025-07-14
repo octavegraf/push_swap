@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 18:05:52 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 19:19:56 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/14 19:44:19 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,18 @@ typedef struct s_stack
 {
 	int				nb;
 	int				i;
-	struct t_stack	*next;
+	struct s_stack	*next;
 }					t_stack;
 
 typedef struct s_stacks
 {
-	struct t_stack	*a;
-	struct t_stack	*b;
+	struct s_stack	*a;
+	struct s_stack	*b;
 }					t_stacks;
 
 //normalize
-int			normalize(t_stack *stack);
-void		bubble_sort(int **array, int size);
-void		sort_index(t_stack *stack, int **array, int size);
+void		bubble_sort(long long int *array, int size);
+void		sort_index(t_stack *stack, long long int *array, int size);
 
 //parsing
 int			int_detector(char **list, int size);

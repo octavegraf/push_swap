@@ -6,41 +6,13 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 16:20:27 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 18:54:59 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/14 19:44:25 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	normalize(t_stack *stack)
-{
-	int		i;
-	int		j;
-	int		**array;
-	t_stack	original;
-
-	i = 0;
-	if (!stack)
-		return (0);
-	while (stack)
-	{
-		stack = stack->next;
-		i++;
-	}
-	array = ft_calloc(i, sizeof(int **));
-	if (!array)
-		return (0);
-	j = 0;
-	while (j < i)
-	{
-		array[j] = original.nb;
-		j++;
-	}
-	bubble_sort(array, i);
-	sort_index(stack, array, i);
-}
-
-void	bubble_sort(int **array, int size)
+void	bubble_sort(long long int *array, int size)
 {
 	int	i;
 	int	j;
@@ -50,7 +22,7 @@ void	bubble_sort(int **array, int size)
 	while (++i < size - 1)
 	{
 		j = -1;
-		while (++j < size - 1)
+		while (++j < size - i - 1)
 		{
 			if (array[j] > array[j + 1])
 			{
@@ -62,20 +34,16 @@ void	bubble_sort(int **array, int size)
 	}
 }
 
-void	sort_index(t_stack *stack, int **array, int size)
+void	sort_index(t_stack *stack, long long int *array, int size)
 {
 	int	i;
-	int	j;
 
 	while (stack)
 	{
 		i = 0;
-		while (stack->nb != array[i] && i < size - 1)
-		{
+		while (stack->nb != array[i] && i < size)
 			i++;
-		}
 		stack->i = i;
 		stack = stack->next;
 	}
 }
- 

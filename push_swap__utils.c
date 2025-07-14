@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 14:32:37 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 19:09:51 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/14 19:35:29 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_stack	*stack_from_array(long long int *array, int size)
 		if (!stack_add_back(stack, array[i], 0))
 			return (stack_free(stack), NULL);
 	}
+	bubble_sort(array, size);
+	sort_index(stack, array, size);
 	return (stack);
 }
 
@@ -51,6 +53,7 @@ t_stack	*stack_add_back(t_stack *stack, int nb, int i)
 
 	if (!stack)
 		return (NULL);
+	original = stack;
 	while (stack->next)
 		stack = stack->next;
 	new = stack_new_element(nb, i);

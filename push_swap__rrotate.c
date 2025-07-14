@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:57:32 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 19:21:40 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/14 19:35:29 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	rra(t_stacks *stacks)
 
 	if (!stacks->a)
 		return (1);
-	result = ft_rotate(stacks->a);
+	result = ft_rrotate(stacks->a);
 	if (!result)
-		return (NULL);
+		return (0);
 	stacks->a = result;
 	return (printf("rra\n"), 1);
 }
@@ -53,9 +53,9 @@ int	rrb(t_stacks *stacks)
 
 	if (!stacks->b)
 		return (1);
-	result = ft_rotate(stacks->b);
+	result = ft_rrotate(stacks->b);
 	if (!result)
-		return (NULL);
+		return (0);
 	stacks->b = result;
 	return (printf("rrb\n"), 1);
 }
@@ -67,8 +67,8 @@ int	rrr(t_stacks *stacks)
 
 	if (!stacks->a || !stacks->b)
 		return (1);
-	result_a = ft_rotate(stacks->a);
-	result_b = ft_rotate(stacks->b);
+	result_a = ft_rrotate(stacks->a);
+	result_b = ft_rrotate(stacks->b);
 	if (!result_a || !result_b)
 		return (stack_free(stacks->a), stack_free(stacks->b), 0);
 	stacks->a = result_a;
