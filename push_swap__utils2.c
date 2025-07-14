@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap__convert2.c                              :+:      :+:    :+:   */
+/*   push_swap__utils2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 11:00:58 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/11 17:09:06 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/14 11:51:35 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,20 @@ void	recalculate(t_stack *stack)
 		stack = stack->next;
 	}
 	stack->i = ++i;
+}
+
+void	free_everything(void **pointer)
+{
+	int	i;
+
+	if (!pointer)
+		return ;
+	i = -1;
+	while (pointer[++i])
+	{
+		free(pointer[i]);
+		pointer[i] = NULL;
+	}
+	free(pointer);
+	pointer = NULL;
 }
