@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:57:32 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 11:25:24 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/14 16:10:20 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,46 @@ t_stack	*ft_rrotate(t_stack *stack)
 	recalculate(result);
 	temp2->next = NULL;
 	return (result);
+}
+
+int	rra(t_stacks *stacks)
+{
+	t_stack	*result;
+
+	if (!stacks->a)
+		return (1);
+	result = ft_rotate(stacks->a);
+	if (!result)
+		return (NULL);
+	stacks->a = result;
+	return (printf("rra\n"), 1);
+}
+
+int	rrb(t_stacks *stacks)
+{
+	t_stack	*result;
+
+	if (!stacks->b)
+		return (1);
+	result = ft_rotate(stacks->b);
+	if (!result)
+		return (NULL);
+	stacks->b = result;
+	return (printf("rrb\n"), 1);
+}
+
+int	rrr(t_stacks *stacks)
+{
+	t_stack	*result_a;
+	t_stack	*result_b;
+
+	if (!stacks->a || !stacks->b)
+		return (1);
+	result_a = ft_rotate(stacks->a);
+	result_b = ft_rotate(stacks->b);
+	if (!result_a || !result_b)
+		return (stack_free(stacks->a), stack_free(stacks->b), 0);
+	stacks->a = result_a;
+	stacks->b = result_b;
+	return (printf("rrr\n"), 1);
 }
