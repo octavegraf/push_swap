@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 11:00:58 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 11:51:35 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/14 14:57:23 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	recalculate(t_stack *stack)
 	stack->i = ++i;
 }
 
-void	free_everything(void **pointer)
+void	free_it(void **pointer)
 {
 	int	i;
 
