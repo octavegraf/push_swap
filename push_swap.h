@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 18:05:52 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/15 16:25:27 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/15 20:36:34 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,11 @@ void		stack_delete(t_stack *stack);
 //utils2
 void		stack_free(t_stack *stack);
 void		free_it(void **pointer);
+int			array_size(char **array);
 
 //push_swap
 t_stacks	*push_swap_init(void);
+int			push_swap(int argc, char **argv);
 void		error(int error);
 
 

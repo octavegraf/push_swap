@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:50:39 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/15 16:20:24 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/15 20:51:39 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,52 @@ t_stacks	*push_swap_init(void)
 	return (stacks);
 }
 
-int	main(int argc, char **argv)
+int	push_swap(int argc, char **argv)
 {
 	t_stacks	*stacks;
 
-	if (argc <= 2)
-		error(133);
+	if (argc < 2)
+		return (1);
 	stacks = push_swap_init();
 	if (!stacks)
-		error(12);
-	if (int_detector(argv + 1, argc - 1))
-		stacks->a = create_stack_from_array(argv + 1, argc - 1);
+		return (1);
+	if (int_detector(argv, argc - 1))
+		stacks->a = create_stack_from_array(argv, argc - 1);
 	if (!stacks->a)
-		return (stack_free(stacks->a), stack_free(stacks->b), free(stacks),
-			error(12), 1);
+		return (stack_free(stacks->a), stack_free(stacks->b), free(stacks), 1);
 	if (!radix(stacks, argc - 1, biggest_bit(argc - 1)))
-		return (stack_free(stacks->a), stack_free(stacks->b), free(stacks),
-			error(12), 1);
+		return (stack_free(stacks->a), stack_free(stacks->b), free(stacks), 1);
 	stack_free(stacks->a);
 	stack_free(stacks->b);
 	free(stacks);
 	return (0);
 }
+
+int	main(int argc, char **argv)
+{
+	char	**args;
+	int		result;
+
+	args = NULL;
+	if (argc < 1)
+		error(133);
+	if (argc == 2)
+	{
+		args = ft_split(argv[1], ' ');
+		if (!args)
+			error(133);
+		argc = array_size(args) + 1;
+		result = push_swap(argc, args);
+		free_it((void *)args);
+	}
+	else
+		result = push_swap(argc, argv + 1);
+	if (result)
+		return (error(13), 1);
+	return (0);
+}
+/*
+- Ajouter fonction pour 3 et 5
+- Verifier pour liste deja triee
+- Segfaults / leaks
+*/

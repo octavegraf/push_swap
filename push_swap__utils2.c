@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 11:00:58 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/15 18:13:58 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/15 20:03:12 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,14 @@ void	free_it(void **pointer)
 	}
 	free(pointer);
 	pointer = NULL;
+}
+
+int	array_size(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+		i++;
+	return (i);
 }
