@@ -1,29 +1,14 @@
 {
 	"version": "0.2.0",
-	"tasks": [
-		{
-			"label": "make re",
-			"type": "shell",
-			"command": "make re",
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"problemMatcher": []
-		}
-	],
 	"configurations": [
 		{
-			"name": "Lancer push_swap",
+			"name": "Debug push_swap",
 			"type": "lldb",
 			"request": "launch",
 			"program": "${workspaceFolder}/push_swap",
-			"args": [],
+			"args": ["4", "67", "3", "87", "23"],
 			"cwd": "${workspaceFolder}",
-			"preLaunchTask": "make re",
+			"preLaunchTask": "Compile push_swap"
 		}
 	]
 }
