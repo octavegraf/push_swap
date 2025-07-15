@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 12:24:07 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/15 15:43:43 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/15 19:45:02 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int	radix(t_stacks *stacks, int size, int bits)
 	int		status;
 
 	i = -1;
-	while (++i < bits - 1)
+	while (++i < bits)
 	{
 		j = -1;
-		while (++j < size - 1)
+		while (++j < size)
 		{
-			if (!((stacks->a->i >> bits) & 1))
+			if (!((stacks->a->i >> i) & 1))
 				status = pb(stacks);
 			else
 				status = ra(stacks);
