@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:57:32 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 19:35:29 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/15 15:39:03 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_stack	*ft_rrotate(t_stack *stack)
 	t_stack	*temp2;
 
 	if (!stack)
-		return (stack_free(stack), NULL);
+		return (NULL);
 	temp = stack;
 	while (temp->next)
 	{
@@ -28,7 +28,7 @@ t_stack	*ft_rrotate(t_stack *stack)
 	}
 	result = stack_add_front(stack, temp->nb, temp->i);
 	if (!result)
-		return (stack_free(stack), NULL);
+		return (NULL);
 	stack_delete(temp);
 	temp2->next = NULL;
 	return (result);
@@ -70,7 +70,7 @@ int	rrr(t_stacks *stacks)
 	result_a = ft_rrotate(stacks->a);
 	result_b = ft_rrotate(stacks->b);
 	if (!result_a || !result_b)
-		return (stack_free(stacks->a), stack_free(stacks->b), 0);
+		return (0);
 	stacks->a = result_a;
 	stacks->b = result_b;
 	return (printf("rrr\n"), 1);

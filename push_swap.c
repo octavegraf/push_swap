@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:50:39 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 19:35:29 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/15 16:20:24 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void	error(int error)
 {
+	errno = error;
 	if (error < 132)
 		perror("Error");
 	if (error > 133)
@@ -40,12 +41,21 @@ int	main(int argc, char **argv)
 {
 	t_stacks	*stacks;
 
-	stacks = push_swap_init();
 	if (argc <= 2)
 		error(133);
+	stacks = push_swap_init();
+	if (!stacks)
+		error(12);
 	if (int_detector(argv + 1, argc - 1))
 		stacks->a = create_stack_from_array(argv + 1, argc - 1);
 	if (!stacks->a)
-		error(12);
+		return (stack_free(stacks->a), stack_free(stacks->b), free(stacks),
+			error(12), 1);
+	if (!radix(stacks, argc - 1, biggest_bit(argc - 1)))
+		return (stack_free(stacks->a), stack_free(stacks->b), free(stacks),
+			error(12), 1);
+	stack_free(stacks->a);
+	stack_free(stacks->b);
+	free(stacks);
 	return (0);
 }

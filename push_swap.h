@@ -6,13 +6,13 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 18:05:52 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 19:44:19 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/15 16:25:27 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "ft_printf.h"
+# include "ft_printf/ft_printf.h"
 # include <errno.h>
 
 typedef struct s_stack
@@ -60,9 +60,9 @@ t_stacks	ft_push(t_stack *to_move, t_stack *top_stack);
 int			pa(t_stacks *stacks);
 int			pb(t_stacks *stacks);
 
-//push_swap
-t_stacks	*push_swap_init(void);
-void		error(int error);
+//radix
+int			biggest_bit(int size);
+int			radix(t_stacks *stacks, int size, int bits);
 
 //utils
 t_stack		*stack_from_array(long long int *array, int size);
@@ -74,5 +74,10 @@ void		stack_delete(t_stack *stack);
 //utils2
 void		stack_free(t_stack *stack);
 void		free_it(void **pointer);
+
+//push_swap
+t_stacks	*push_swap_init(void);
+void		error(int error);
+
 
 #endif
