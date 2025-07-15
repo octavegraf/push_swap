@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 11:00:58 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/15 15:41:32 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/15 18:13:58 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	stack_free(t_stack *stack)
 {
+	if (!stack)
+		return ;
 	if (stack->next)
 		stack_free(stack->next);
 	stack_delete(stack);
