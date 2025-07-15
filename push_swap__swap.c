@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:31:41 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/15 15:40:32 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/15 18:41:08 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	sa(t_stacks *stacks)
 	if (!stacks->a)
 		return (1);
 	stacks->a = ft_swap(stacks->a);
-	return (printf("sa\n"), 1);
+	return (ft_printf("sa\n"), 1);
 }
 
 int	sb(t_stacks *stacks)
@@ -41,7 +41,7 @@ int	sb(t_stacks *stacks)
 	if (!stacks->b)
 		return (1);
 	stacks->b = ft_swap(stacks->b);
-	return (printf("sb\n"), 1);
+	return (ft_printf("sb\n"), 1);
 }
 
 int	ss(t_stacks	*stacks)
@@ -54,5 +54,5 @@ int	ss(t_stacks	*stacks)
 	stacks->b = ft_swap(stacks->b);
 	if (!stacks->b)
 		return (0);
-	return (printf("ss\n"), 1);
+	return (ft_printf("ss\n"), 1);
 }

@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:31:41 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/15 15:38:33 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/15 18:40:45 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_stacks	ft_push(t_stack *to_move, t_stack *top_stack)
 
 	result.a = NULL;
 	result.b = NULL;
-	if (!to_move || !top_stack)
+	if (!to_move)
 		return (result);
 	temp = stack_add_front(top_stack, to_move->nb, to_move->i);
 	if (!temp)
@@ -36,26 +36,26 @@ int	pa(t_stacks *stacks)
 {
 	t_stacks	result;
 
-	if (!stacks->a || !stacks->b)
+	if (!stacks->b)
 		return (1);
 	result = ft_push(stacks->b, stacks->a);
-	if (!result.a || !result.b)
+	if (!result.b)
 		return (0);
-	stacks->a = result.a;
-	stacks->b = result.b;
-	return (printf("pa\n"), 1);
+	stacks->a = result.b;
+	stacks->b = result.a;
+	return (ft_printf("pa\n"), 1);
 }
 
 int	pb(t_stacks *stacks)
 {
 	t_stacks	result;
 
-	if (!stacks->a || !stacks->b)
+	if (!stacks->a)
 		return (1);
 	result = ft_push(stacks->a, stacks->b);
-	if (!result.a || !result.b)
+	if (!result.b)
 		return (0);
 	stacks->a = result.a;
 	stacks->b = result.b;
-	return (printf("pb\n"), 1);
+	return (ft_printf("pb\n"), 1);
 }
