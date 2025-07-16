@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:50:39 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/15 20:51:39 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/16 15:04:42 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	push_swap(int argc, char **argv)
 {
 	t_stacks	*stacks;
 
+	stacks = NULL;
 	if (argc < 2)
 		return (1);
 	stacks = push_swap_init();
@@ -50,7 +51,13 @@ int	push_swap(int argc, char **argv)
 		stacks->a = create_stack_from_array(argv, argc - 1);
 	if (!stacks->a)
 		return (stack_free(stacks->a), stack_free(stacks->b), free(stacks), 1);
-	if (!radix(stacks, argc - 1, biggest_bit(argc - 1)))
+	if (argc == 4 || argc == 6)
+	{
+		if (!small_sort_bis(stacks, argc))
+			return (stack_free(stacks->a), stack_free(stacks->b),
+				free(stacks), 1);
+	}
+	else if (!radix(stacks, argc - 1, biggest_bit(argc - 1)))
 		return (stack_free(stacks->a), stack_free(stacks->b), free(stacks), 1);
 	stack_free(stacks->a);
 	stack_free(stacks->b);
@@ -64,7 +71,7 @@ int	main(int argc, char **argv)
 	int		result;
 
 	args = NULL;
-	if (argc < 1)
+	if (argc == 1)
 		error(133);
 	if (argc == 2)
 	{
@@ -82,7 +89,5 @@ int	main(int argc, char **argv)
 	return (0);
 }
 /*
-- Ajouter fonction pour 3 et 5
-- Verifier pour liste deja triee
 - Segfaults / leaks
 */

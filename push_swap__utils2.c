@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 11:00:58 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/15 20:03:12 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/16 13:09:48 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,20 @@ int	array_size(char **array)
 	while (array[i])
 		i++;
 	return (i);
+}
+
+int	is_sorted(t_stacks *stacks)
+{
+	int		i;
+	t_stack	*list;
+
+	i = 0;
+	list = stacks->a;
+	while (list)
+	{
+		if (list->i != i++)
+			return (0);
+		list = list->next;
+	}
+	return (1);
 }
