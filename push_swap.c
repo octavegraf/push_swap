@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:50:39 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/17 11:08:51 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/17 16:37:37 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	error(int error)
 {
 	errno = error;
 	if (error < 132)
-		perror("Error");
+		ft_printf("Error system. Search for errno %d\n", errno);
 	if (error > 133)
 		ft_printf("Error\n");
 	if (error == 134)
@@ -80,12 +80,12 @@ int	main(int argc, char **argv)
 			error(133);
 		argc = array_size(args) + 1;
 		result = push_swap(argc, args);
-		free_it((void *)args);
+		free_it((void **)args);
 	}
 	else
 		result = push_swap(argc, argv + 1);
 	if (result)
-		return (error(13), 1);
+		return (error(12), 1);
 	return (0);
 }
 /*
