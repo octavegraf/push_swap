@@ -6,12 +6,11 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:56:09 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/14 19:35:29 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/17 17:23:57 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h>
 
 int	int_detector(char **list, int size)
 {
@@ -22,12 +21,13 @@ int	int_detector(char **list, int size)
 	while (++i < size)
 	{
 		j = -1;
-		if ((list[i][0] == '-') || (list[i][0] == '+'))
+		if (((list[i][0] == '-') || (list[i][0] == '+')) && list[i][1]
+				&& (list[i][1] <= '9' && list[i][1] >= '0'))
 			j++;
 		while (list[i][++j])
 		{
 			if (list[i][j] > '9' || list[i][j] < '0')
-				return (ft_printf("Error\nNot integer detected."), 0);
+				return (ft_printf("Error\nNot integer detected.\n"), 0);
 		}
 	}
 	return (1);
@@ -53,7 +53,7 @@ t_stack	*create_stack_from_array(char **list, int i)
 		while (++k < i)
 			if (array[j] == array[k])
 				return (free(array),
-					ft_printf("Error\nDuplicate detected."), NULL);
+					ft_printf("Error\nDuplicate detected.\n"), NULL);
 	}
 	if (detect_bad_numbers(array, i))
 		return (free(array), NULL);
@@ -71,7 +71,7 @@ int	detect_bad_numbers(long long int *array, int size)
 	while (++i < size)
 	{
 		if (array[i] > INT_MAX || array[i] < INT_MIN)
-			return (ft_printf("Error\nInt (over/under)flow"), 1);
+			return (ft_printf("Error\nInt (over/under)flow\n"), 1);
 	}
 	return (0);
 }
