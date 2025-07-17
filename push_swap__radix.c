@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 12:24:07 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/16 15:04:58 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/17 11:46:46 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,31 +81,29 @@ int	small_sort(t_stacks *stacks)
 
 int	small_sort_bis(t_stacks *stacks, int argc)
 {
-	t_stack	*list;
-	t_stack	*og;
-	int		i;
-
 	if (is_sorted(stacks))
 		return (1);
-	i = -1;
-	og = stacks->a;
-	list = stacks->a;
-	if (argc)
-	{	
-		while (++i < 2)
+	while (argc >= 5 && argc < 7)
+	{
+		if (stacks->a->i == 3 || stacks->a->i == 4)
 		{
-			while (list && (list->i != 3 && list->i != 4))
-				list = list->next;
-			stacks->a = list;
+			argc++;
 			if (!pb(stacks))
 				return (0);
 		}
+		else
+			if (!ra(stacks))
+				return (0);
 	}
-	stacks->a = og;
-	if (stacks->b->i == 4)
+	if (stacks && stacks->b && stacks->b->i == 3)
 		if (!rb(stacks))
 			return (0);
 	if (small_sort(stacks) != 2)
+		return (0);
+	while (stacks->b)
+		if (!pa(stacks))
+			return (0);
+	if (argc == 7 && (!ra(stacks) || !ra(stacks)))
 		return (0);
 	return (1);
 }

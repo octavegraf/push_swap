@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:50:39 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/16 15:04:42 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/17 11:08:51 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	push_swap(int argc, char **argv)
 		return (stack_free(stacks->a), stack_free(stacks->b), free(stacks), 1);
 	if (argc == 4 || argc == 6)
 	{
-		if (!small_sort_bis(stacks, argc))
+		if (!small_sort_bis(stacks, argc - 1))
 			return (stack_free(stacks->a), stack_free(stacks->b),
 				free(stacks), 1);
 	}
