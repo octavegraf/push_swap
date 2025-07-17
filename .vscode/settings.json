@@ -4,6 +4,9 @@
 		"ft_printf.h": "c",
 		"limits.h": "c",
 		"libft.h": "c",
-		"errno.h": "c"
+		"errno.h": "c",
+		"stdlib.h": "c",
+		"stdio.h": "c",
+		"stdarg.h": "c"
 	}
 }
