@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 11:00:58 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/16 13:09:48 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/17 16:07:22 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 void	stack_free(t_stack *stack)
 {
-	if (!stack)
-		return ;
-	if (stack->next)
-		stack_free(stack->next);
-	stack_delete(stack);
+	t_stack	*temp;
+
+	while (stack)
+	{
+		temp = stack->next;
+		stack_delete(stack);
+		stack = temp;
+	}
 }
 
 void	free_it(void **pointer)
@@ -27,14 +30,14 @@ void	free_it(void **pointer)
 
 	if (!pointer)
 		return ;
-	i = -1;
-	while (pointer[++i])
+	i = 0;
+	while (pointer[i])
 	{
 		free(pointer[i]);
 		pointer[i] = NULL;
+		i++;
 	}
 	free(pointer);
-	pointer = NULL;
 }
 
 int	array_size(char **array)
