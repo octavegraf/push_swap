@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 12:24:07 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/17 11:46:46 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/17 15:54:56 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ int	radix(t_stacks *stacks, int size, int bits)
 			else
 				status = ra(stacks);
 			if (!status)
-				return (stack_free(stacks->a), stack_free(stacks->b), 0);
+				return (0);
 		}
 		while (stacks->b)
 		{
 			status = pa(stacks);
 			if (!status)
-				return (stack_free(stacks->a), stack_free(stacks->b), 0);
+				return (0);
 		}
 	}
 	return (1);
