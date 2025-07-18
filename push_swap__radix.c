@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 12:24:07 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/17 15:54:56 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/18 17:28:05 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,10 @@ int	radix(t_stacks *stacks, int size, int bits)
 	return (1);
 }
 
-int	small_sort(t_stacks *stacks)
+int	small_sort(t_stacks *stacks, int i)
 {
 	int		array[3];
 	t_stack	*list;
-	int		i;
 	int		result;
 
 	i = -1;
@@ -76,6 +75,8 @@ int	small_sort(t_stacks *stacks)
 		result = ra(stacks) + 1;
 	else if (array[0] == 2 && array[1] == 1 && array[2] == 0)
 		result = sa(stacks) + rra(stacks);
+	else if (array[0] == 0 && array[1] == 1 && array[2] == 2)
+		result = 2;
 	return (result);
 }
 
@@ -98,7 +99,7 @@ int	small_sort_bis(t_stacks *stacks, int argc)
 	if (stacks && stacks->b && stacks->b->i == 3)
 		if (!rb(stacks))
 			return (0);
-	if (small_sort(stacks) != 2)
+	if (small_sort(stacks, 0) != 2)
 		return (0);
 	while (stacks->b)
 		if (!pa(stacks))

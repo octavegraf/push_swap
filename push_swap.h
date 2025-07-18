@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 18:05:52 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/17 11:10:07 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/18 17:27:43 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int			pb(t_stacks *stacks);
 //radix
 int			biggest_bit(int size);
 int			radix(t_stacks *stacks, int size, int bits);
-int			small_sort(t_stacks *stacks);
+int			small_sort(t_stacks *stacks, int i);
 int			small_sort_bis(t_stacks *stacks, int argc);
 
 //utils
@@ -79,11 +79,9 @@ void		free_it(void **pointer);
 int			array_size(char **array);
 int			is_sorted(t_stacks *stacks);
 
-
 //push_swap
 t_stacks	*push_swap_init(void);
 int			push_swap(int argc, char **argv);
 void		error(int error);
-
 
 #endif

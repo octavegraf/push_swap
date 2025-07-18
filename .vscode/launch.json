@@ -6,7 +6,7 @@
 			"type": "lldb",
 			"request": "launch",
 			"program": "${workspaceFolder}/push_swap",
-			"args": ["8  -3 5 454 2"],
+			"args": ["1 2 4 3 0"],
 			"cwd": "${workspaceFolder}",
 			"preLaunchTask": "Compile push_swap"
 		}
