@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:56:09 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/17 17:23:57 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/18 18:54:27 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	int_detector(char **list, int size)
 	while (++i < size)
 	{
 		j = -1;
+		if (ft_strlen(list[i]) > 11)
+			return (ft_printf("Error\nNot an int or int(over/under)flow\n"), 0);
 		if (((list[i][0] == '-') || (list[i][0] == '+')) && list[i][1]
 				&& (list[i][1] <= '9' && list[i][1] >= '0'))
 			j++;
