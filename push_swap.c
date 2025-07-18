@@ -6,7 +6,7 @@
 /*   By: ocgraf <ocgraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:50:39 by ocgraf            #+#    #+#             */
-/*   Updated: 2025/07/17 16:37:37 by ocgraf           ###   ########.fr       */
+/*   Updated: 2025/07/18 17:29:58 by ocgraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 void	error(int error)
 {
 	errno = error;
-	if (error < 132)
-		ft_printf("Error system. Search for errno %d\n", errno);
 	if (error > 133)
 		ft_printf("Error\n");
 	if (error == 134)
